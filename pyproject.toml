@@ -1,0 +1,17 @@
+[project]
+name = "clowdbot-agent"
+version = "0.1.0"
+requires-python = ">=3.11"
+description = "Autonomous operations agent - Discord bot + API + webhook handler"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = false
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+ignore_missing_imports = true

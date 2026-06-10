@@ -1,0 +1,256 @@
+# This is aYou are hereby authorized to proceed immediately with all six workstreams in my clowdbot-agent environment.
+
+APPROVAL SCOPE
+
+You have my approval to design, implement, modify, test, commit, and push changes for the following:
+
+1. Dockerfile and full containerization
+2. Additional API endpoints, including:
+   - status dashboard endpoints
+   - event history endpoints
+   - manual trigger endpoints
+3. GitHub Actions CI setup and related workflow files
+4. Monitoring, health checks, uptime checks, and alerting scaffolding
+5. Additional Discord commands, including:
+   - !status
+   - !events
+   - !deploy
+   - !incident
+   - any other commands required for operational completeness
+6. Expanded webhook handlers for GitHub events, including:
+   - issues
+   - pull requests
+   - releases
+   - CI events
+   - other useful repository events
+
+GENERAL AUTHORIZATION
+
+You may do all of the following without asking again:
+- inspect the repository and runtime state
+- read, write, rename, and reorganize project files
+- create new modules, packages, routes, utilities, configs, and docs
+- update existing code
+- create environment variable templates
+- add Docker and docker-compose assets
+- add GitHub workflow YAML files
+- add health-check and monitoring logic
+- add logging, tracing, and structured event capture
+- improve architecture where needed
+- create database migrations or schema extensions if required
+- create branches, commit changes, and push to GitHub
+- refactor incomplete or weak code to production-grade quality
+- install dependencies if required for implementation
+- run safe build, lint, and test commands
+- run the application locally for verification
+- fix errors encountered during implementation
+- iterate until the system is materially more complete, reliable, and automated
+
+DELIVERY STANDARD
+
+Implement this as a production-grade engineering system, not as a demo.
+
+Requirements:
+- modular architecture
+- explicit error handling
+- structured logging
+- safe defaults
+- clear documentation
+- maintainable code
+- minimal duplication
+- sensible config via environment variables
+- auditability for automated actions
+- approval-gated handling for risky operations
+
+OPERATING MODE
+
+Default to autonomous execution for low-risk engineering work.
+Do not pause for confirmation on routine implementation choices.
+Make reasonable technical decisions independently and continue.
+
+You should:
+- inspect current files first
+- identify missing components
+- build in the correct order of dependency
+- repair incomplete scaffolding
+- avoid cosmetic changes unless they materially improve maintainability
+- prefer durable architecture over shortcuts
+
+PRIORITY ORDER
+
+Execute in this order unless repository state suggests a better dependency sequence:
+
+Phase 1:
+- finish any incomplete core runtime files
+- validate app startup path
+- validate configuration loading
+- validate database initialization
+- validate API health endpoint
+
+Phase 2:
+- implement Dockerfile, docker-compose, and runtime container support
+- add missing API endpoints
+- improve webhook handling
+- add Discord command coverage
+
+Phase 3:
+- implement GitHub Actions CI
+- implement monitoring and operational checks
+- improve documentation and runbooks
+
+Phase 4:
+- harden reliability, logging, and operational guardrails
+- clean up architecture
+- commit and push final changes
+
+MANDATORY SAFETY CONSTRAINTS
+
+You are NOT authorized to do any of the following without explicit further approval:
+- reveal, print, export, or transmit secrets, tokens, credentials, cookies, or private keys
+- rotate or regenerate credentials
+- change billing settings
+- incur paid usage intentionally beyond normal low-cost testing
+- delete repositories, branches, tags, databases, or important files
+- force-push to protected branches
+- merge directly into protected branches if protections would be bypassed
+- deploy to production infrastructure
+- restart or alter external production services
+- send external customer-facing communications
+- weaken security controls for convenience
+
+SECRETS POLICY
+
+Assume secrets are injected only through environment variables or approved secret stores.
+If a secret is missing:
+- create placeholders
+- document exactly what is required
+- continue all non-blocked implementation work
+- do not stop the project solely because credentials are absent
+
+DISCORD TOKEN AND OPENAI KEY HANDLING
+
+You are authorized to integrate support for Discord and OpenAI fully.
+You are not authorized to fabricate tokens or bypass missing credentials.
+If Discord bot token, GitHub token scope, or OpenAI credits are missing:
+- complete all code and config scaffolding
+- create clear .env.example entries
+- wire the code paths correctly
+- leave the system ready for immediate activation once credentials are supplied
+
+GITHUB AUTHORIZATION
+
+You are authorized to:
+- create branches
+- commit changes
+- push commits
+- create workflow files
+- improve repository structure
+- prepare PR-ready changes
+
+Do not:
+- delete the repo
+- destroy history
+- bypass protections
+- expose secrets in commits
+
+TESTING AUTHORIZATION
+
+You are authorized to run safe verification commands, including:
+- python3 main.py
+- python3 -m pip install -r requirements.txt
+- lint/test/build commands
+- container build commands
+- local HTTP health checks
+- non-destructive diagnostic commands
+
+RISK HANDLING
+
+If you encounter a blocker:
+1. classify it
+2. work around it where safely possible
+3. continue parallel workstreams that are not blocked
+4. document what remains blocked and why
+5. propose the shortest path to completion
+
+Do not stop at the first blocker if meaningful progress can still be made elsewhere.
+
+OUTPUT AND REPORTING FORMAT
+
+At meaningful checkpoints, report in this format:
+
+[STATUS]
+- current phase
+- completion percentage
+- active blockers
+
+[CHANGES MADE]
+- files created
+- files updated
+- dependencies added
+- commands run
+
+[VALIDATION]
+- what was tested
+- what passed
+- what failed
+
+[BLOCKERS]
+- missing secrets
+- missing permissions
+- missing scopes
+- runtime issues
+
+[NEXT ACTION]
+- exact next implementation step
+
+FINAL OBJECTIVE
+
+Transform this repository into a cohesive autonomous operations agent that:
+- runs reliably
+- exposes useful operational APIs
+- supports Discord command-and-control
+- handles GitHub webhooks robustly
+- logs events to SQLite
+- supports Dockerized execution
+- is CI-ready
+- is monitoring-ready
+- is safe by default
+- is immediately activatable once credentials are supplied
+
+You have approval to begin now and continue until the repository is materially complete under these constraints.
+basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: echo Hello, world!
+
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.

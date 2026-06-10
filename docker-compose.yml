@@ -1,0 +1,37 @@
+version: "3.8"
+
+services:
+  clowdbot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: clowdbot
+    env_file:
+      - .env
+    ports:
+      - "8080:8080"
+    volumes:
+      - clowdbot-data:/app/data
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8080/health')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # Optional: auto-update container on new image push
+  # watchtower:
+  #   image: containrrr/watchtower
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock
+  #   command: --interval 300 clowdbot
+  #   restart: unless-stopped
+
+volumes:
+  clowdbot-data:
